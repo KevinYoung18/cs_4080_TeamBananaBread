@@ -1,3 +1,8 @@
+// Marlon Aquino, Allison Inciong, Michael Nguyen, Kevin Young
+// CS 4080
+// Professor Talari
+// May 7, 2020
+
 import java.util.*;
 
 //int to float
