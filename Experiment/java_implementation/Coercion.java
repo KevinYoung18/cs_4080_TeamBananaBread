@@ -5,32 +5,41 @@
 
 import java.util.*;
 
-//int to float
-//
-public class Coercion {
-
-
-    public static void main(String[] args) throws Exception {
+public class Coercion 
+{
+    // main method
+    public static void main(String[] args) throws Exception 
+    {
+        // declare variables for time
         long startTime = 0;
         long endTime = 0;
         double tempTimeElapsed = 0;
         double timeElapsed = 0;
 
+        // create a random object to generate random numbers
         Random rand = new Random();
-        int nxtRandom = 10; // Numbers will be between 0 and 10
+        int nxtRandom = 10;                                                             // Numbers will be between 0 and 10
         Scanner sc = new Scanner(System.in);
-        int n = 4; // n represents matrix rows + columns
+        int n = 4;                                                                      // n represents matrix rows + columns
+       
+        // prompt the user for matrix size
         System.out.print("Enter a number (higher than 0) for the size your matrix: ");
-        do {
-            try {
+        do 
+        {
+            try 
+            {
                 n = sc.nextInt();
-            } catch (InputMismatchException e) {
+            } 
+            catch (InputMismatchException e) 
+            {
                 System.out.println("Enter a number (higher than 0) for your matrix: ");
             }
             sc.nextLine();
         } while (n <= 0);
 
-        if (n == 1) {
+        // if statement
+        if (n == 1) 
+        {
             int firstNum, secondNum;
             System.out.println("Enter a number for the first matrix: ");
             firstNum = sc.nextInt();
@@ -40,36 +49,50 @@ public class Coercion {
             System.exit(0);
         }
 
+        // create arrays for matrix multiplication, operands and product arrays
         int[][] array1 = new int[n][n];
         float[][] array2 = new float[n][n];
         int[][] finalArray = new int[n][n];
 
+        // instantiate counter
         int counter = 0;
 
-        while (counter < 5) {
+        // while loop
+        while (counter < 5) 
+        {
+            // print what value counter holds
             System.out.println(counter);
+            
             // filling the first array
-            for (int i = 0; i < n; i++) {
+            for (int i = 0; i < n; i++) 
+            {
                 for (int j = 0; j < n; j++)
                     array1[i][j] = rand.nextInt(nxtRandom);
             }
 
             // filling the second array
-            for (int i = 0; i < n; i++) {
+            for (int i = 0; i < n; i++) 
+            {
                 for (int j = 0; j < n; j++)
                     array2[i][j] = rand.nextFloat();
             }
 
+            // start clock
             startTime = System.currentTimeMillis();
+            
             // multiplying both arrays via the classic way
-            for (int i = 0; i < n; i++) {
-                for (int j = 0; j < n; j++) {
-                    for (int k = 0; k < n; k++) {
+            for (int i = 0; i < n; i++) 
+            {
+                for (int j = 0; j < n; j++) 
+                {
+                    for (int k = 0; k < n; k++) 
+                    {
                         finalArray[i][j] += (float) array1[i][k] * (array2[k][j]);
                     }
                 }
             }
 
+            // stop clock and increment counter
             endTime = System.currentTimeMillis();
             tempTimeElapsed = endTime - startTime;
             timeElapsed = timeElapsed + tempTimeElapsed;
@@ -88,7 +111,10 @@ public class Coercion {
          }
          **/
 
+        // close scanner
         sc.close();
+        
+        // calculate time in seconds
         timeElapsed = ((timeElapsed) / 1000) / 5;
         System.out.println("Runtime with cast: " + timeElapsed + " s");
     }
